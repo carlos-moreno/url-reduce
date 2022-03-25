@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from url_reduce.core.views import redirecionar
+from url_reduce.core.views import redirect, reports
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('<slug:slug>', redirecionar),
+    path('<slug:slug>', redirect),
+    path('reports/<slug:slug>', reports),
 ]
