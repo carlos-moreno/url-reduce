@@ -5,6 +5,10 @@ from django.shortcuts import redirect as r, render
 from url_reduce.core.models import UrlRedirect, UrlLog
 
 
+def home(request):
+    return render(request, "core/home.html")
+
+
 def reports(request, slug):
     url_redirect = UrlRedirect.objects.get(slug=slug)
     shortened_url = request.build_absolute_uri(f"/{slug}")
