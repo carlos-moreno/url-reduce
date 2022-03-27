@@ -12,6 +12,7 @@ class UrlRedirect(models.Model):
     class Meta:
         verbose_name = "URL Redirect"
         verbose_name_plural = "URL's Redirect"
+        ordering = ["-created_at"]
 
     def __str__(self):
         return f"UrlRedirect para {self.destination}"

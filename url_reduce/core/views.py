@@ -3,9 +3,21 @@ from django.db.models.functions import TruncDate
 from django.shortcuts import redirect as r, render
 
 from url_reduce.core.models import UrlRedirect, UrlLog
+from url_reduce.core.slug_generator import gen_slug
 
 
 def home(request):
+    if "url" in request.POST:
+        UrlRedirect.objects.create(
+            destination=request.POST.get("url"),
+            slug=gen_slug(),
+        )
+        context = {
+            "reduce": request.build_absolute_uri(
+                f"/{UrlRedirect.objects.get(destination=request.POST.get('url')).slug}"
+            )
+        }
+        return render(request, "core/reduce.html", context)
     return render(request, "core/home.html")
 
 
