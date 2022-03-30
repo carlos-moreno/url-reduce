@@ -22,13 +22,33 @@
         <div class="offset-sm-1 col-sm-10">
           <h1 class="font-weight-bold">URL<span class="font-weight-light color-y">Reduce</span></h1>
           <p class="h5 mb-5 text-muted">Encurtador de URL</p>
-          <h4 class="h5 mb-5 text-muted">Reduzido: <a href="{{ reduce }}" class="color-y">{{ reduce }}</a></h4>
+          <div class="row">
+              <div class="col-sm-9 input-group-lg">
+                <h4 class="h5 mb-5 text-muted">Reduzido: <a id="reduce" href="{{ reduce }}" class="color-y">{{ reduce }}</a></h4>
+              </div>
+              <div class="col-sm-3">
+                <button onclick="copyUrlToClipboard(reduce)" class="btn btn-outline-primary">COPY</button>
+              </div>
+          </div>
         </div>
-      </div>      <p class="mt-5 mb-3 text-muted"><span class="color-y">&copy;</span> 2021 - Jornada Rumo a Primeira Vaga | URL<span class="color-y">Reduce</span></p>
+      </div>
+      <p class="mt-5 mb-3 text-muted"><span class="color-y">&copy;</span> 2021 - Jornada Rumo a Primeira Vaga | URL<span class="color-y">Reduce</span></p>
     </div>
        
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Copy URL -->
+    <script>
+        function copyUrlToClipboard(text) {
+           const v_url = document.createElement('textarea');
+           v_url.value = text;
+           document.body.appendChild(v_url);
+           v_url.select();
+           document.execCommand('copy');
+           document.body.removeChild(v_url);
+        }
+    </script>
+    <!-- Copy URL -->
   </body>
 </html>

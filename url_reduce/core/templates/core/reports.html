@@ -34,14 +34,13 @@
 
       <div class="row">
         <div class="offset-sm-1 col-sm-10 text-left text-muted">
-          <h4>Reduzido: <a href="{{ shortened_url }}" class="color-y">{{ shortened_url }}</a></h4>
+          <h4>Reduzido: <a id="shortUrl" href="{{ shortened_url }}" class="color-y">{{ shortened_url }}</a></h4>
         </div>
       </div>
 
       <div class="row">
         <div class="offset-sm-1 col-sm-10 text-left">
-          <button class="btn btn-outline-primary">COPY</button>
-          <button class="btn btn-outline-primary">SHARE</button>
+          <button onclick="copyUrlToClipboard(shortUrl)" class="btn btn-outline-primary">COPY</button>
         </div>
       </div>
 
@@ -167,5 +166,18 @@
       });
     </script>
     <!-- Gráfico -->
+
+    <!-- Copy URL -->
+    <script>
+        function copyUrlToClipboard(text) {
+           const v_url = document.createElement('textarea');
+           v_url.value = text;
+           document.body.appendChild(v_url);
+           v_url.select();
+           document.execCommand('copy');
+           document.body.removeChild(v_url);
+        }
+    </script>
+    <!-- Copy URL -->
   </body>
 </html>
